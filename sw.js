@@ -3,14 +3,19 @@
  * Punkt Odniesienia PWA
  */
 
-const CACHE_NAME = 'punkt-odniesienia-v1';
+const CACHE_NAME = 'punkt-odniesienia-v4';
 const ASSETS = [
-    '/',
-    '/index.html',
-    '/style.css',
-    '/app.js',
-    '/kontakt.vcf',
-    '/manifest.json'
+    './',
+    './index.html',
+    './style.css',
+    './app.js',
+    './kontakt.vcf',
+    './manifest.json',
+    './favicon.svg',
+    './icon-192.png',
+    './icon-512.png',
+    './logo.png',
+    './polityka-prywatnosci.html'
 ];
 
 // Install - cache assets
@@ -39,6 +44,6 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
         caches.match(event.request)
             .then((cached) => cached || fetch(event.request))
-            .catch(() => caches.match('/index.html'))
+            .catch(() => caches.match('./index.html'))
     );
 });

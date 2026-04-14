@@ -2,13 +2,13 @@
     "github": {
         "username": "Gruszkoland",
         "repo": "punkt-odniesienia",
-        "pages_url": "https://gruszkoland.github.io/punkt-odniesienia/"
+        "pages_url": "https://punkt-odniesienia.com/"
     },
     "business": {
         "name": "Punkt Odniesienia",
         "tagline": "Agencja marketingowa AI",
         "phone": "+48502260232",
-        "email": "punktodniesienia.adrian@gmail.com",
+        "email": "adrian@punkt-odniesienia.com",
         "address": {
             "street": "Wolsztyńska 23/3",
             "city": "Poznań",
@@ -23,6 +23,13 @@
     },
     "features": {
         "social_media": false,
-        "logo": "placeholder"
+        "logo": "favicon.svg",
+        "icons": {
+            "favicon_svg": "favicon.svg",
+            "favicon_png": "favicon-32.png",
+            "icon_192": "icon-192.png",
+            "icon_512": "icon-512.png",
+            "og_image": "og-image.png"
+        }
     }
 }

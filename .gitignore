@@ -8,3 +8,11 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Source assets (too large for GitHub Pages)
+logo punkt odniesienia.png
+Front dla punkt odniesienia.png
+generate_assets.py
+
+# Separate project
+geo-maps-toolkit/
