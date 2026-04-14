@@ -1,0 +1,28 @@
+{
+    "github": {
+        "username": "Gruszkoland",
+        "repo": "punkt-odniesienia",
+        "pages_url": "https://gruszkoland.github.io/punkt-odniesienia/"
+    },
+    "business": {
+        "name": "Punkt Odniesienia",
+        "tagline": "Agencja marketingowa AI",
+        "phone": "+48502260232",
+        "email": "punktodniesienia.adrian@gmail.com",
+        "address": {
+            "street": "Wolsztyńska 23/3",
+            "city": "Poznań",
+            "postal": "60-361",
+            "country": "Polska"
+        },
+        "coords": {
+            "lat": 52.4092961,
+            "lng": 16.8856119
+        },
+        "description": "Nowoczesna agencja marketingowa wykorzystująca AI do optymalizacji sprzedaży online. Automatyzacja marketingu, wdrażanie narzędzi AI, generowanie leadów B2B oraz zaawansowana analityka danych."
+    },
+    "features": {
+        "social_media": false,
+        "logo": "placeholder"
+    }
+}

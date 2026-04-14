@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Punkt Odniesienia
+ORG:Punkt Odniesienia
+TITLE:Agencja Marketingowa AI
+TEL;TYPE=WORK,VOICE:+48502260232
+EMAIL;TYPE=WORK:punktodniesienia.adrian@gmail.com
+ADR;TYPE=WORK:;;Wolsztyńska 23/3;Poznań;;60-361;Polska
+GEO:52.4092961;16.8856119
+URL:https://gruszkoland.github.io/punkt-odniesienia/
+NOTE:Agencja marketingowa AI - automatyzacja marketingu, leady B2B, analityka danych
+END:VCARD
