@@ -171,7 +171,39 @@ h1 {
 .map-container iframe {
     display: block;
 }
+/* ========== CONTACT FORM ========== */
+.contact-form {
+    margin-bottom: 1.5rem;
+}
 
+.form-group {
+    margin-bottom: 0.75rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    font-family: inherit;
+    color: var(--text);
+    background: transparent;
+    transition: border-color 0.2s ease;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--text-muted);
+}
 /* ========== SERVICES ========== */
 .services {
     margin-bottom: 1.5rem;
@@ -278,5 +310,16 @@ h1 {
 
     .service {
         background: rgba(51, 65, 85, 0.6);
+    }
+
+    .form-group input,
+    .form-group textarea {
+        border-color: #475569;
+        color: var(--text);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        border-color: var(--primary);
     }
 }

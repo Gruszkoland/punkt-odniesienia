@@ -99,7 +99,7 @@ async function registerServiceWorker() {
 }
 
 /**
- * Contact Form handler (Formspree)
+ * Contact Form handler (FormSubmit)
  */
 function initContactForm() {
     const form = document.getElementById('contact-form');

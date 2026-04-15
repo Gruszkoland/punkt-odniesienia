@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /geo-maps-toolkit/
 
 Sitemap: https://punkt-odniesienia.com/sitemap.xml

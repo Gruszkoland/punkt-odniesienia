@@ -1,0 +1,315 @@
+/* ========================================
+   Usługi Page — Additional Styles
+   Extends main style.css
+   ======================================== */
+
+/* ========== NAVIGATION ========== */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.nav__logo {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.nav__links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav__links a {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.nav__links a:hover,
+.nav__active {
+    color: var(--primary) !important;
+    font-weight: 600;
+}
+
+/* ========== PAGE LAYOUT ========== */
+.page {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 5rem 1.5rem 2rem;
+}
+
+/* ========== HERO ========== */
+.hero {
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.hero__subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* ========== SERVICE CARDS ========== */
+.services-detail {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.service-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.service-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.service-card h2 {
+    font-size: 1.3rem;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+}
+
+.service-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.service-card__list {
+    list-style: none;
+    padding: 0;
+}
+
+.service-card__list li {
+    padding: 0.4rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--text);
+    font-size: 0.9rem;
+}
+
+.service-card__list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* ========== PRICING ========== */
+.pricing {
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 800;
+    text-align: center;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 2rem;
+}
+
+.pricing__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.pricing-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    position: relative;
+    text-align: center;
+}
+
+.pricing-card--popular {
+    border: 3px solid var(--primary);
+    transform: scale(1.05);
+}
+
+.pricing-card__badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.3rem 1rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.pricing-card__header h3 {
+    font-size: 1.4rem;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+}
+
+.pricing-card__price {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+.pricing-card__price span {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--text-muted);
+}
+
+.pricing-card__features {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+.pricing-card__features li {
+    padding: 0.4rem 0;
+    font-size: 0.9rem;
+    color: var(--text);
+}
+
+.pricing-card__features li.muted {
+    color: var(--text-muted);
+    opacity: 0.6;
+}
+
+.pricing-card__cta {
+    width: 100%;
+}
+
+/* ========== CTA SECTION ========== */
+.cta-section {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    margin-bottom: 2rem;
+}
+
+.cta-section h2 {
+    font-size: 1.5rem;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+}
+
+.cta-section p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.btn--lg {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    display: inline-flex;
+    margin: 0.5rem;
+}
+
+/* ========== PAGE FOOTER ========== */
+.page__footer {
+    text-align: center;
+    padding: 2rem 0 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 0.8rem;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+    .nav__links {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .pricing-card--popular {
+        transform: none;
+    }
+
+    .pricing__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========== DARK MODE ========== */
+@media (prefers-color-scheme: dark) {
+    .nav {
+        background: rgba(30, 41, 59, 0.9);
+        border-bottom-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .service-card,
+    .pricing-card,
+    .cta-section {
+        background: rgba(30, 41, 59, 0.95);
+    }
+}

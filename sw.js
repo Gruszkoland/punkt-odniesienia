@@ -3,7 +3,7 @@
  * Punkt Odniesienia PWA
  */
 
-const CACHE_NAME = 'punkt-odniesienia-v4';
+const CACHE_NAME = 'punkt-odniesienia-v6';
 const ASSETS = [
     './',
     './index.html',
@@ -39,11 +39,21 @@ self.addEventListener('activate', (event) => {
     );
 });
 
-// Fetch - cache-first strategy
+// Fetch - stale-while-revalidate strategy
 self.addEventListener('fetch', (event) => {
     event.respondWith(
-        caches.match(event.request)
-            .then((cached) => cached || fetch(event.request))
-            .catch(() => caches.match('./index.html'))
+        caches.match(event.request).then((cached) => {
+            const fetchPromise = fetch(event.request)
+                .then((response) => {
+                    if (response && response.ok) {
+                        const clone = response.clone();
+                        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+                    }
+                    return response;
+                })
+                .catch(() => cached || caches.match('./index.html'));
+
+            return cached || fetchPromise;
+        })
     );
 });
