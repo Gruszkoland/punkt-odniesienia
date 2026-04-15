@@ -171,6 +171,7 @@ h1 {
 .map-container iframe {
     display: block;
 }
+
 /* ========== CONTACT FORM ========== */
 .contact-form {
     margin-bottom: 1.5rem;
@@ -204,9 +205,50 @@ h1 {
 .form-group textarea::placeholder {
     color: var(--text-muted);
 }
+
 /* ========== SERVICES ========== */
 .services {
     margin-bottom: 1.5rem;
+}
+
+.pricing-preview {
+    margin-bottom: 1.5rem;
+}
+
+.pricing-preview__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+}
+
+.price-box {
+    background: #f8fafc;
+    border-radius: var(--radius-sm);
+    padding: 0.9rem 1rem;
+    text-align: center;
+}
+
+.price-box strong {
+    display: block;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+}
+
+.price-box span {
+    display: block;
+    color: var(--primary);
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+}
+
+.price-box small {
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+.price-box--accent {
+    border: 2px solid var(--primary);
+    background: rgba(37, 99, 235, 0.06);
 }
 
 .services__title {
@@ -309,6 +351,10 @@ h1 {
     }
 
     .service {
+        background: rgba(51, 65, 85, 0.6);
+    }
+
+    .price-box {
         background: rgba(51, 65, 85, 0.6);
     }
 
