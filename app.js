@@ -5,6 +5,9 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     initShareButton();
+    initContactForm();
+    initPlausibleGoals();
+    initABTests();
     registerServiceWorker();
 });
 
@@ -95,6 +98,90 @@ async function registerServiceWorker() {
     }
 }
 
+/**
+ * Contact Form handler (Formspree)
+ */
+function initContactForm() {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('button[type="submit"]');
+        if (!btn) return;
+
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<span class="btn__icon">⏳</span> Wysyłanie...';
+        btn.disabled = true;
+
+        const formData = new FormData(form);
+        const ajaxEndpoint = form.dataset.ajaxEndpoint || form.action;
+
+        try {
+            const response = await fetch(ajaxEndpoint, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' },
+            });
+
+            if (!response.ok) {
+                throw new Error('Form submission failed');
+            }
+
+            showToast('Wiadomość wysłana! Odpowiemy w ciągu 24h.');
+            form.reset();
+            trackGoal('Contact Form Submit');
+        } catch (error) {
+            console.warn('Primary form submission failed, using fallback.', error);
+            try {
+                HTMLFormElement.prototype.submit.call(form);
+                return;
+            } catch {
+                showToast('Błąd wysyłania. Napisz na adrian@punkt-odniesienia.com lub zadzwoń: 502 260 232');
+            }
+        } finally {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }
+    });
+}
+
+/**
+ * Plausible Analytics — Custom Goals
+ * Events: Call Click, Email Click, Navigate Click, Share Click, Contact Form Submit, VCard Download
+ */
+function initPlausibleGoals() {
+    const goals = [
+        { selector: 'a[href^="tel:"]', event: 'Call Click' },
+        { selector: 'a[href^="mailto:"]', event: 'Email Click' },
+        { selector: 'a[href*="google.com/maps/dir"]', event: 'Navigate Click' },
+        { selector: '#share-btn', event: 'Share Click' },
+        { selector: 'a[href="kontakt.vcf"]', event: 'VCard Download' },
+    ];
+
+    goals.forEach(({ selector, event }) => {
+        const el = document.querySelector(selector);
+        if (el) {
+            el.addEventListener('click', () => trackGoal(event));
+        }
+    });
+}
+
+/**
+ * Track Plausible goal (no-op if Plausible not loaded)
+ * @param {string} name - Goal name
+ * @param {Object} [props] - Custom properties (for A/B testing etc.)
+ */
+function trackGoal(name, props) {
+    if (typeof window.plausible === 'function') {
+        if (props) {
+            window.plausible(name, { props });
+        } else {
+            window.plausible(name);
+        }
+    }
+}
+
 // Add CSS for toast animation
 const style = document.createElement('style');
 style.textContent = `
@@ -107,3 +194,79 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+/**
+ * A/B Testing Framework — Plausible Custom Props
+ *
+ * Usage:
+ *   1. Define variants in AB_TESTS config below
+ *   2. Variants are assigned by hashing a stable visitor ID (random, stored in localStorage)
+ *   3. All Plausible events include the variant as a custom property
+ *   4. Analyze in Plausible → Custom Properties → filter by "ab_variant"
+ *
+ * Current tests:
+ *   - cta_text: Primary CTA button text variant (A: "Zadzwoń" vs B: "Umów rozmowę")
+ *   - hero_tagline: Tagline variant (A: original vs B: alternative)
+ */
+
+const AB_TESTS = {
+    cta_text: {
+        variants: ['Zadzwoń: 502 260 232', 'Umów bezpłatną rozmowę'],
+        selector: '.btn--primary',
+        apply: (el, variant) => {
+            // Keep the icon, replace text
+            const icon = el.querySelector('.btn__icon');
+            if (icon) {
+                el.textContent = '';
+                el.appendChild(icon);
+                el.append(' ' + variant);
+            }
+        },
+    },
+    hero_tagline: {
+        variants: ['Agencja Marketingowa AI | Poznań', 'Twoja firma na szczycie Google Maps'],
+        selector: '.tagline',
+        apply: (el, variant) => {
+            el.textContent = variant;
+        },
+    },
+};
+
+function initABTests() {
+    // Stable visitor ID for consistent variant assignment
+    let visitorId = localStorage.getItem('_ab_vid');
+    if (!visitorId) {
+        visitorId = crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2);
+        localStorage.setItem('_ab_vid', visitorId);
+    }
+
+    const activeVariants = {};
+
+    Object.entries(AB_TESTS).forEach(([testName, config]) => {
+        const hash = simpleHash(visitorId + testName);
+        const variantIndex = hash % config.variants.length;
+        const variant = config.variants[variantIndex];
+
+        activeVariants[testName] = variantIndex === 0 ? 'A' : 'B';
+
+        // Apply variant to DOM
+        const el = document.querySelector(config.selector);
+        if (el && variantIndex > 0) {
+            config.apply(el, variant);
+        }
+    });
+
+    // Track variant assignment once per pageview
+    trackGoal('AB Pageview', activeVariants);
+}
+
+/**
+ * Simple string hash — deterministic, fast, non-crypto
+ */
+function simpleHash(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+        hash = ((hash << 5) - hash + str.charCodeAt(i)) | 0;
+    }
+    return Math.abs(hash);
+}
