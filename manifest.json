@@ -1,7 +1,7 @@
 {
     "name": "Punkt Odniesienia",
     "short_name": "PO",
-    "id": "/punkt-odniesienia/",
+    "id": "/",
     "description": "Cyfrowa wizytówka - Punkt Odniesienia, Agencja Marketingowa AI, Poznań",
     "start_url": ".",
     "scope": ".",

@@ -234,10 +234,18 @@ const AB_TESTS = {
 
 function initABTests() {
     // Stable visitor ID for consistent variant assignment
-    let visitorId = localStorage.getItem('_ab_vid');
-    if (!visitorId) {
+    let visitorId;
+    
+    try {
+        visitorId = localStorage.getItem('_ab_vid');
+        if (!visitorId) {
+            visitorId = crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2);
+            localStorage.setItem('_ab_vid', visitorId);
+        }
+    } catch (e) {
+        // localStorage not available (private browsing, etc.)
+        console.warn('localStorage not available for AB tests:', e);
         visitorId = crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2);
-        localStorage.setItem('_ab_vid', visitorId);
     }
 
     const activeVariants = {};

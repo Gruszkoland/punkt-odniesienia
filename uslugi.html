@@ -23,7 +23,7 @@
 
     <link rel="canonical" href="https://punkt-odniesienia.com/uslugi.html">
     <link rel="alternate" hreflang="pl" href="https://punkt-odniesienia.com/uslugi.html">
-    <link rel="alternate" hreflang="en" href="https://punkt-odniesienia.com/en/services.html">
+    <link rel="alternate" hreflang="en" href="https://punkt-odniesienia.com/en/">
 
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
@@ -86,6 +86,11 @@
     <!-- Navigation -->
     <nav class="nav">
         <a href="./" class="nav__logo">Punkt Odniesienia</a>
+        <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
+            <span class="nav__toggle-line"></span>
+            <span class="nav__toggle-line"></span>
+            <span class="nav__toggle-line"></span>
+        </button>
         <div class="nav__links">
             <a href="./">Strona główna</a>
             <a href="uslugi.html" class="nav__active">Usługi</a>
@@ -93,6 +98,16 @@
             <a href="./#contact-form">Kontakt</a>
         </div>
     </nav>
+
+    <script>
+        document.querySelector('.nav__toggle')?.addEventListener('click', () => {
+            const toggle = document.querySelector('.nav__toggle');
+            const links = document.querySelector('.nav__links');
+            toggle.classList.toggle('nav__toggle--active');
+            links.classList.toggle('nav__links--open');
+            toggle.setAttribute('aria-expanded', toggle.classList.contains('nav__toggle--active'));
+        });
+    </script>
 
     <main class="page">
         <!-- Hero -->

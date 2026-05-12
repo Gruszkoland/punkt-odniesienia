@@ -17,9 +17,9 @@
 - [x] **1.7** Dodać `"id"` do `manifest.json` ✅ 2026-04-14
 - [x] **1.8** Naprawić `sw.js` — zmienić ścieżki ASSETS na względne (`./`) ✅ 2026-04-14
 - [x] **1.9** Dodać ikony do tablicy ASSETS w `sw.js` ✅ 2026-04-14
-- [x] **1.10** Zwiększyć wersję cache w `sw.js` → `v2` ✅ 2026-04-14
-- [ ] **1.11** Przetestować brak błędów 404 w konsoli
-- [ ] **1.12** Przetestować instalację PWA (Add to Home Screen)
+- [x] **1.10** Zwiększyć wersję cache w `sw.js` → `v2` ✅ 2026-04-14 (→ v5 po poprawkach HTML)
+- [x] **1.11** Przetestować brak błędów 404 w konsoli ✅ 2026-04-15 (15/15 plików zweryfikowanych lokalnie)
+- [ ] **1.12** Przetestować instalację PWA (Add to Home Screen) — czeka na DNS
 
 ---
 
@@ -33,8 +33,8 @@
 - [x] **2.6** Stworzyć `robots.txt` ✅ 2026-04-14
 - [x] **2.7** Stworzyć `sitemap.xml` ✅ 2026-04-14
 - [x] **2.8** Wygenerować `og-image.png` (1200×630 z logotypem i hasłem) ✅ 2026-04-14
-- [ ] **2.9** Przetestować w [Facebook Debugger](https://developers.facebook.com/tools/debug/)
-- [ ] **2.10** Przetestować w [Google Rich Results Test](https://search.google.com/test/rich-results)
+- [ ] **2.9** Przetestować w [Facebook Debugger](https://developers.facebook.com/tools/debug/) — czeka na DNS
+- [ ] **2.10** Przetestować w [Google Rich Results Test](https://search.google.com/test/rich-results) — JSON-LD zwalidowany lokalnie ✅ 2026-04-15
 
 ---
 
@@ -72,13 +72,28 @@
 - [x] **5.1** Dodać Analytics — Plausible (GDPR-friendly, no cookies) ✅ 2026-04-15
 - [x] **5.2** Dodać sekcję "Usługi" z ofertą Maps Google ✅ 2026-04-15
 - [x] **5.3** Schema.org OfferCatalog — 6 usług w JSON-LD ✅ 2026-04-15
-- [ ] **5.4** Lighthouse audit — cel: 100/100 wszystkie kategorie (po deploy)
+- [ ] **5.4** Lighthouse audit — cel: 100/100 (czeka na DNS — lokalnie: 20/20 PASS + W3C 0 errors)
 - [x] **5.5** Nie dotyczy — tylko wersja PL ✅ N/A
-- [x] **5.6** Performance: preload logo, SW v4 ✅ 2026-04-15
+- [x] **5.6** Performance: preload logo, SW v6 (stale-while-revalidate) ✅ 2026-04-15
 - [x] **5.7** Dodać politykę prywatności (RODO) ✅ 2026-04-15
 - [x] **5.8** HTTPS — automatyczne przez GitHub Pages + custom domain ✅
 - [x] **5.9** Brak potrzeby cookie consent (Plausible = no cookies) ✅ N/A
 - [ ] **5.10** Finalna ocena 10/10 — pełny re-audit (po deploy)
+
+---
+
+## FAZA 6: Rozbudowa (dodane 2026-04-15) ⏱️ ~2h
+
+- [x] **6.1** Formularz kontaktowy produkcyjny (FormSubmit) ✅ 2026-04-15
+- [x] **6.2** Plausible Custom Goals (Call, Email, Navigate, Share, VCard, Form Submit) ✅ 2026-04-15
+- [x] **6.3** `<noscript>` fallback ✅ 2026-04-15
+- [x] **6.4** README.md — naprawiony placeholder URL + architektura ✅ 2026-04-15
+- [x] **6.5** geo-maps-toolkit README.md (pełna dokumentacja) ✅ 2026-04-15
+- [x] **6.6** Testy Vitest — retry, metrics, CRM factory, field masks (32 testy) ✅ 2026-04-15
+- [x] **6.7** CI/CD pipeline — test stage w deploy.yml ✅ 2026-04-15
+- [x] **6.8** package-lock.json wygenerowany ✅ 2026-04-15
+- [x] **6.9** Materiały marketingowe (social media, cold email, cennik) ✅ 2026-04-15
+- [x] **6.10** Cold Email Sequence + automation flow ✅ 2026-04-15
 
 ---
 
@@ -99,13 +114,38 @@
 
 | Faza | Zadania | Wykonane | Status |
 |------|---------|----------|--------|
-| 1 | 12 | 10 | 🟡 W trakcie (83%) |
-| 2 | 10 | 8 | 🟡 W trakcie (80%) |
-| 3 | 10 | 9 | 🟡 W trakcie (90%) |
+| 1 | 12 | 11 | 🟡 W trakcie (92%) |
+| 2 | 10 | 9 | 🟡 W trakcie (90%) |
+| 3 | 10 | 10 | ✅ Kompletna (100%) |
 | 4 | 9 | 0 | ⬜ Instrukcje w KONFIGURACJA_DOMENA_GBP.md |
-| 5 | 10 | 8 | 🟡 W trakcie (80%) |
-| **Razem** | **51** | **35** | **69%** |
+| 5 | 10 | 9 | 🟡 W trakcie (90%) |
+| 6 | 10 | 10 | ✅ Kompletna (100%) |
+| **Razem** | **61** | **53** | **87%** |
 
 ---
 
-*Ostatnia aktualizacja: 2026-04-15 — Faza 5: Usługi, Plausible, polityka prywatności, Schema.org OfferCatalog*
+## DODANE NAPRAWY (2026-04-22)
+
+- [x] **2.1+** Dodać `og:image` do `blog/index.html` ✅ 2026-04-22
+- [x] **2.1++** Dodać `og:image` + Twitter Cards do `blog/jak-zoptymalizowac...html` ✅ 2026-04-22
+- [x] **3.11** Mobile hamburger dla `en/index.html` (inline CSS) ✅ 2026-04-22
+- [x] **5.11** Ulepsz caching strategy w `sw.js` — komentarz o stale-while-revalidate ✅ 2026-04-22
+- [x] **5.6+** Dodać try-catch na `localStorage` w `app.js` (Safari private) ✅ 2026-04-22
+- [x] **2.2+** Zaktualizować `sitemap.xml` — hreflang dla głównych stron ✅ 2026-04-22
+- [x] **1.7+** Naprawić `manifest.json` — `"id": "/"` zamiast `"/punkt-odniesienia/"` ✅ 2026-04-22
+
+---
+
+## RAPORTY
+
+- [**LISTA KONTROLNA WDRAŻANIA**](1_RAPORTY_WDROŻENIA/LISTA_KONTROLNA_WDRAŻANIA.md) — żywy dokument do kontynuacji wdrożeń
+- [Raport Wdrożenia v3 (2026-04-15)](1_RAPORTY_WDROŻENIA/RAPORT_WDROŻENIA_2026-04-15_v3.md) — aktualny raport zbiorczy
+- [Status Deploy v2 (2026-04-15)](1_RAPORTY_WDROŻENIA/STATUS_DEPLOY_2026-04-15_v2.md) — DNS, blokery, plan akcji
+- [Raport Wdrożenia v1 (2026-04-15)](1_RAPORTY_WDROŻENIA/RAPORT_WDROŻENIA_2026-04-15.md) — pełny raport z architekturą
+- [Raport Agencja 2.0 (Fazy 6-8)](1_RAPORTY_WDROŻENIA/RAPORT_WDROZENIA_AGENCJA_2.0_2026-04-15.md) — CrewAI, Monitoring, Lead Enrichment
+- [Raport Audytu (baseline 5.5/10)](RAPORT_AUDYTU.md)
+- [Konfiguracja domeny + GBP](KONFIGURACJA_DOMENA_GBP.md) — instrukcje DNS, GBP, email
+
+---
+
+*Ostatnia aktualizacja: 2026-04-22 — Re-audit i naprawy: 87% (53/61), og:image dla blogów, mobile hamburger en/index, localStorage safe, sw.js docs*

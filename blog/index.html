@@ -14,10 +14,18 @@
     <meta property="og:type" content="website">
     <meta property="og:locale" content="pl_PL">
     <meta property="og:url" content="https://punkt-odniesienia.com/blog/">
+    <meta property="og:image" content="https://punkt-odniesienia.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog | Punkt Odniesienia">
+    <meta name="twitter:description"
+        content="Praktyczne poradniki o optymalizacji wizytówek Google, SEO lokalnym i marketingu w Mapach.">
+    <meta name="twitter:image" content="https://punkt-odniesienia.com/og-image.png">
 
     <link rel="canonical" href="https://punkt-odniesienia.com/blog/">
     <link rel="alternate" hreflang="pl" href="https://punkt-odniesienia.com/blog/">
-    <link rel="alternate" hreflang="en" href="https://punkt-odniesienia.com/en/blog/">
 
     <link rel="icon" href="../favicon.svg" type="image/svg+xml">
     <link rel="manifest" href="../manifest.json">
@@ -34,6 +42,11 @@
 <body>
     <nav class="nav">
         <a href="../" class="nav__logo">Punkt Odniesienia</a>
+        <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
+            <span class="nav__toggle-line"></span>
+            <span class="nav__toggle-line"></span>
+            <span class="nav__toggle-line"></span>
+        </button>
         <div class="nav__links">
             <a href="../">Strona główna</a>
             <a href="../uslugi.html">Usługi</a>
@@ -41,6 +54,16 @@
             <a href="../#contact-form">Kontakt</a>
         </div>
     </nav>
+
+    <script>
+        document.querySelector('.nav__toggle')?.addEventListener('click', () => {
+            const toggle = document.querySelector('.nav__toggle');
+            const links = document.querySelector('.nav__links');
+            toggle.classList.toggle('nav__toggle--active');
+            links.classList.toggle('nav__links--open');
+            toggle.setAttribute('aria-expanded', toggle.classList.contains('nav__toggle--active'));
+        });
+    </script>
 
     <main class="page">
         <section class="hero">
@@ -50,6 +73,42 @@
         </section>
 
         <section class="blog-grid">
+            <article class="blog-card">
+                <div class="blog-card__meta">
+                    <time datetime="2026-04-24">24 kwietnia 2026</time>
+                    <span class="blog-card__tag">Reklama lokalna</span>
+                </div>
+                <h2><a href="google-maps-ads-lsa.html">Google Maps Ads i LSA — jak działają i ile kosztują w 2026</a>
+                </h2>
+                <p>Reklamy w Google Maps: Local Services Ads vs Google Ads. Porównanie kosztów, efektywności i kiedy
+                    warto inwestować w płatną promocję lokalną.</p>
+                <a href="google-maps-ads-lsa.html" class="blog-card__read">Czytaj więcej →</a>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-card__meta">
+                    <time datetime="2026-04-23">23 kwietnia 2026</time>
+                    <span class="blog-card__tag">SEO lokalne</span>
+                </div>
+                <h2><a href="kategorie-google-business-profile.html">Kategorie Google Business Profile — jak wybrać
+                        właściwe w 2026</a></h2>
+                <p>Kategoria główna GBP to czynnik rankingowy #1. Dowiedz się, jak dobrać właściwą kategorię,
+                    jakich błędów unikać i jak analizować konkurencję.</p>
+                <a href="kategorie-google-business-profile.html" class="blog-card__read">Czytaj więcej →</a>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-card__meta">
+                    <time datetime="2026-04-22">22 kwietnia 2026</time>
+                    <span class="blog-card__tag">SEO lokalne</span>
+                </div>
+                <h2><a href="jak-zdobyc-opinie-google-maps.html">Jak zdobyć opinie na Google Maps — strategie 2026</a>
+                </h2>
+                <p>Sprawdzone metody pozyskiwania recenzji: QR kody, SMS follow-up, email automatyzacja. Etycznie,
+                    skutecznie i bez ryzyka naruszenia regulaminu Google.</p>
+                <a href="jak-zdobyc-opinie-google-maps.html" class="blog-card__read">Czytaj więcej →</a>
+            </article>
+
             <article class="blog-card">
                 <div class="blog-card__meta">
                     <time datetime="2026-04-20">20 kwietnia 2026</time>

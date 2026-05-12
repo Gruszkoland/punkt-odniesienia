@@ -1,9 +1,16 @@
 /**
  * Service Worker - Offline Support
  * Punkt Odniesienia PWA
+ * 
+ * CACHING STRATEGY:
+ * - ASSETS: Static files cached at install time (manually updated on new features)
+ * - Fetch handler: Implements stale-while-revalidate for all requests
+ *   → New blog articles (*.html) are automatically cached on first visit
+ *   → CSS/JS updates are fetched in background and served on next visit
+ *   → No need to manually add each new blog article to ASSETS
  */
 
-const CACHE_NAME = 'punkt-odniesienia-v6';
+const CACHE_NAME = 'punkt-odniesienia-v7';
 const ASSETS = [
     './',
     './index.html',
@@ -12,10 +19,17 @@ const ASSETS = [
     './kontakt.vcf',
     './manifest.json',
     './favicon.svg',
+    './favicon-32.png',
     './icon-192.png',
     './icon-512.png',
     './logo.png',
-    './polityka-prywatnosci.html'
+    './og-image.png',
+    './polityka-prywatnosci.html',
+    './uslugi.html',
+    './uslugi.css',
+    './blog/index.html',
+    './blog/blog.css',
+    './blog/jak-zoptymalizowac-wizytowke-google-maps.html'
 ];
 
 // Install - cache assets

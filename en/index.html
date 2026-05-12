@@ -86,6 +86,50 @@
 </head>
 
 <body>
+    <style>
+        @media (max-width: 640px) {
+            .nav__toggle {
+                display: flex;
+            }
+
+            .nav__links {
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                gap: 0;
+                background: white;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                padding: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+
+            .nav__links--open {
+                max-height: 300px;
+                padding: 1rem 0;
+            }
+
+            .nav__links a {
+                display: block;
+                padding: 0.75rem 2rem;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.02);
+            }
+
+            .nav__links a:last-child {
+                border-bottom: none;
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .nav__links {
+                background: #1e293b !important;
+            }
+        }
+    </style>
+
     <main class="card">
         <div class="lang-switch">
             <a href="../" title="Wersja polska">🇵🇱 PL</a>
@@ -174,7 +218,8 @@
         <section class="contact-form">
             <h2 class="services__title">Free consultation</h2>
             <p class="services__subtitle">Write to us — we'll respond within 24 hours</p>
-            <form id="contact-form" action="https://formsubmit.co/adrian@punkt-odniesienia.com" data-ajax-endpoint="https://formsubmit.co/ajax/adrian@punkt-odniesienia.com" method="POST">
+            <form id="contact-form" action="https://formsubmit.co/adrian@punkt-odniesienia.com"
+                data-ajax-endpoint="https://formsubmit.co/ajax/adrian@punkt-odniesienia.com" method="POST">
                 <input type="hidden" name="_language" value="en">
                 <input type="hidden" name="_subject" value="New website inquiry from Punkt Odniesienia">
                 <input type="hidden" name="_template" value="table">

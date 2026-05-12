@@ -14,9 +14,18 @@
     <meta property="og:type" content="article">
     <meta property="og:locale" content="pl_PL">
     <meta property="og:url" content="https://punkt-odniesienia.com/blog/jak-zoptymalizowac-wizytowke-google-maps.html">
+    <meta property="og:image" content="https://punkt-odniesienia.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="article:published_time" content="2026-04-20">
     <meta property="article:author" content="Punkt Odniesienia">
     <meta property="article:section" content="SEO lokalne">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Jak zoptymalizować wizytówkę Google Maps w 2026">
+    <meta name="twitter:description"
+        content="Praktyczny przewodnik krok po kroku po optymalizacji profilu Google Business Profile. Kategorie, opis, zdjęcia, opinie.">
+    <meta name="twitter:image" content="https://punkt-odniesienia.com/og-image.png">
 
     <link rel="canonical" href="https://punkt-odniesienia.com/blog/jak-zoptymalizowac-wizytowke-google-maps.html">
     <link rel="icon" href="../favicon.svg" type="image/svg+xml">
@@ -92,6 +101,11 @@
 <body>
     <nav class="nav">
         <a href="../" class="nav__logo">Punkt Odniesienia</a>
+        <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
+            <span class="nav__toggle-line"></span>
+            <span class="nav__toggle-line"></span>
+            <span class="nav__toggle-line"></span>
+        </button>
         <div class="nav__links">
             <a href="../">Strona główna</a>
             <a href="../uslugi.html">Usługi</a>
@@ -99,6 +113,16 @@
             <a href="../#contact-form">Kontakt</a>
         </div>
     </nav>
+
+    <script>
+        document.querySelector('.nav__toggle')?.addEventListener('click', () => {
+            const toggle = document.querySelector('.nav__toggle');
+            const links = document.querySelector('.nav__links');
+            toggle.classList.toggle('nav__toggle--active');
+            links.classList.toggle('nav__links--open');
+            toggle.setAttribute('aria-expanded', toggle.classList.contains('nav__toggle--active'));
+        });
+    </script>
 
     <main class="page">
         <article class="article">
